@@ -66,5 +66,60 @@ function deleteInvalids(array){
 // Problem 04 : Make A Great Password--------
 
 function password(obj){
-    
+    if(typeof obj !== 'object' || obj === null){
+        return 'invalid';
+    }
+
+    const {name, birthYear, siteName} = obj;
+    if(!name || !birthYear || !siteName){
+        return 'invalid';
+    }
+
+    if(birthYear.toString().length !== 4){
+        return 'invalid';
+    }
+
+    const site = siteName[0].toUpperCase() + siteName.slice(1).toLowerCase();
+
+    const finalPassword = `${site}#${name}@${birthYear}`;
+    return finalPassword;
 }
+
+
+// console.log(password({ name: "kolimuddin" , birthYear: 1999 , siteName: "google" }));
+
+
+
+
+// Problem 05 : Monthly Savings of a Freelancer--------
+
+function monthlySavings(arr, livingCost) {
+    if(!Array.isArray(arr) || typeof livingCost !== 'number'){
+        return 'invalid input';
+    }
+
+    let totalIncome = 0;
+
+    for(let payment of arr){
+        if(payment >= 3000){
+            let tax = payment * 0.2;
+            let afterTax = payment - tax;
+            totalIncome += afterTax;
+        }
+        else{
+            totalIncome += payment;
+        }
+    }
+
+    const Savings = totalIncome - livingCost;
+
+    if(Savings >= 0){
+        return Savings;
+    }
+    else{
+        return 'earn more';
+    }
+}
+
+
+console.log(monthlySavings([ 1000 , 2000 , 2500 ] , 5000 ))
