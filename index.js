@@ -42,3 +42,29 @@ function checkName(name){
 
 
 
+// Problem 03 : Virus in my Array-----
+
+function deleteInvalids(array){
+    if(!Array.isArray(array)){
+        return 'Invalid Array';
+    }
+
+    let validNumbers = [];
+    for(const item of array){
+        if(typeof item === 'number' && !isNaN(item)){
+            validNumbers.push(item);
+        }
+    }
+    return validNumbers;
+
+}
+
+// console.log(deleteInvalids([1, null, undefined, 18, -19, NaN, "12", [1, 2], { ob: "lala" }] ));
+
+
+
+// Problem 04 : Make A Great Password--------
+
+function password(obj){
+    
+}
